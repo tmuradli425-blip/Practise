@@ -1,0 +1,63 @@
+﻿@using Practise.Models
+@model List<Member>
+
+<div>
+	<h1>Slider Management</h1>
+	<a asp-controller="Member" asp-action="Create" class="btn btn-primary">Add</a>
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">FullName</th>
+				<th scope="col">Position Name</th>
+				<th scope="col">IsDeleted</th>
+				<th scope="col">Image</th>
+				<th scope="col">Settings</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (Member member in Model)
+			{
+				<tr>
+					<th scope="row">@member.Id</th>
+					<td>@member.FullName</td>
+					<td>@(member.Position?.Name ?? "No Position")</td>
+					<td>
+						@if (member.IsDeleted == false)
+						{
+							<span class="text-success">Active</span>
+						}
+						else
+						{
+							<span class="text-danger">Inactive</span>
+						}
+					</td>
+					<td>
+						<img style="width: 100px; height: 100px; object-fit: cover;" src="~@member.ImageUrl" alt="Image" />
+					</td>
+
+					<td>
+						<div class="d-flex">
+							@if (member.IsDeleted == false)
+							{
+								<form asp-controller="Member" asp-action="SoftDelete" asp-route-id="@member.Id" method="post" style="display:inline;" class="mr-2">
+									<button type="submit" class="btn btn-danger">Delete</button>
+								</form>
+							}
+							else
+							{
+								<form asp-controller="Member" asp-action="Restore" asp-route-id="@member.Id" method="post" style="display:inline;" class="mr-2">
+									<button type="submit" class="btn btn-success">Restore</button>
+								</form>
+							}
+
+							<a asp-controller="Member" asp-action="Update" asp-route-id="@member.Id" class="btn btn-warning">Update</a>
+						</div>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>

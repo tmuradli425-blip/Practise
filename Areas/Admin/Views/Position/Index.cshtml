@@ -1,0 +1,58 @@
+﻿@using Practise.Models
+@model List<Position>
+<div>
+    <h1>Position Management</h1>
+    <a asp-controller="Position" asp-action="Create" class="btn btn-primary btn-sm mb-3">Add</a>
+
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th scope="col" style="width: 5%;">#</th>
+                <th scope="col">Name</th>
+                <th scope="col" style="width: 15%;">Status</th>
+                <th scope="col" style="width: 25%;">Operations</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Position position in Model)
+            {
+                <tr>
+                    <th scope="row" class="align-middle">@position.Id</th>
+                    <td class="align-middle">@position.Name</td>
+
+                    <td class="align-middle">
+                        @if (position.IsDeleted == false)
+                        {
+                            <span class="text-success font-weight-bold">Active</span>
+                        }
+                        else
+                        {
+                            <span class="text-danger font-weight-bold">Inactive</span>
+                        }
+                    </td>
+
+                    <td class="align-middle">
+                        <div class="d-flex align-items-center">
+
+                            <a asp-controller="Position" asp-action="Update" asp-route-id="@position.Id" class="btn btn-warning btn-sm mr-2">Update</a>
+
+                            @if (position.IsDeleted == false)
+                            {
+                                <form asp-controller="Position" asp-action="SoftDelete" asp-route-id="@position.Id" method="post" style="display:inline;">
+                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                </form>
+                            }
+                            else
+                            {
+                                <form asp-controller="Position" asp-action="Restore" asp-route-id="@position.Id" method="post" style="display:inline;">
+                                    <button type="submit" class="btn btn-success btn-sm">Restore</button>
+                                </form>
+                            }
+
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

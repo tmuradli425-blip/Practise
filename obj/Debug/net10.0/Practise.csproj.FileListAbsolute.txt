@@ -1882,3 +1882,4 @@ C:\Users\raufu\source\repos\Practise\Practise\obj\Debug\net10.0\compressed\uz0hk
 C:\Users\raufu\source\repos\Practise\Practise\obj\Debug\net10.0\compressed\gq5xhrfbxy-{0}-33z6q9z31h-33z6q9z31h.gz
 C:\Users\raufu\source\repos\Practise\Practise\obj\Debug\net10.0\compressed\z9mf33kafk-{0}-rszun4iext-rszun4iext.gz
 C:\Users\raufu\source\repos\Practise\Practise\obj\Debug\net10.0\compressed\f0ax39asxf-{0}-l5o0ocrnlv-l5o0ocrnlv.gz
+C:\Users\raufu\source\repos\Practise\Practise\obj\Debug\net10.0\Practise.sourcelink.json
