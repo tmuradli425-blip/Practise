@@ -1855,6 +1855,7 @@ wwwroot\admin\vendor\jquery\jquery.slim.min.js
 wwwroot\admin\vendor\jquery\jquery.slim.min.map
 wwwroot\css\bootstrap.min.css
 wwwroot\css\style.css
+wwwroot\img\214a7cf3-9e80-4d6b-b812-d5a1e215f60a_pexels-eikenaar-26201918.jpg
 wwwroot\img\38e47e43-b3fc-4347-b0c1-3505b6d9b470_pexels-eikenaar-26201918.jpg
 wwwroot\img\6efadf97-b94c-459f-a72f-f7c0167db03f_.jpg
 wwwroot\img\7b0322f1-0182-43a1-8aa4-8527b558df19_pexels-eikenaar-26201918.jpg
