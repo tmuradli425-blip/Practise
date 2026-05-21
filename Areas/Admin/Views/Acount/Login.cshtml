@@ -1,9 +1,10 @@
 ﻿@using Practise.ViewModels
 @model LoginVM
-<form asp-controller ="Acount" asp-action="Login" method="post">
+<form asp-area="Admin" asp-controller ="Acount" asp-action="Login" method="post">
     <!-- Email input -->
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div data-mdb-input-init class="form-outline mb-4">
-        <input asp-for="UserNameOrEmail" type="email" id="form2Example1" class="form-control" />
+        <input asp-for="UserNameOrEmail" type="text" id="form2Example1" class="form-control" />
         <label class="form-label" for="form2Example1">Email address</label>
     </div>
 
@@ -34,7 +35,7 @@
 
     <!-- Register buttons -->
     <div class="text-center">
-        <p>Not a member? <a href="#!">Register</a></p>
+        <p>Not a member? <a asp-area="Admin" asp-controller="Acount" asp-action="Register">Register</a></p>
         <p>or sign up with:</p>
         <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
             <i class="fab fa-facebook-f"></i>

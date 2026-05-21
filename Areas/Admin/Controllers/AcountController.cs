@@ -69,6 +69,8 @@ namespace Practise.Areas.Admin.Controllers
             }
             return RedirectToAction("Index", "Dashboard");
         }
+        [HttpGet]
+        [HttpPost]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();

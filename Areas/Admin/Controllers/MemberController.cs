@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Practise.DAL;
 using Practise.Models;
+using Practise.Utilities.ImageFile;
 
 namespace Practise.Areas.Admin.Controllers
 {
@@ -29,27 +30,38 @@ namespace Practise.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Member member)
         {
+            //    if (!ModelState.IsValid)
+            //    {
+            //        ViewBag.Positions = await _context.Positions.Where(x => !x.IsDeleted).ToListAsync();
+            //      return View();
+            //    }
+            //    if (member.ImageFile != null)
+            //    {
+            //        string folder = Path.Combine(_env.WebRootPath, "img");
+            //        string fileName = Guid.NewGuid().ToString() + "_" + member.ImageFile.FileName;
+            //        string filePath = Path.Combine(folder, fileName);
+            //        using (var stream = new FileStream(filePath, FileMode.Create))
+            //        {
+            //            await member.ImageFile.CopyToAsync(stream);
+            //        }
+            //        member.ImageUrl = "/img/" + fileName;
+            //    }
+            //    await _context.Members.AddAsync(member);
+            //    await _context.SaveChangesAsync();
+            //    return RedirectToAction(nameof(Index));
+            //}
+            member.ImageUrl = member.ImageFile.SaveImage(_env, "uploads/members");
             //if (!ModelState.IsValid)
             //{
-            //    ViewBag.Positions = await _context.Positions.Where(x => !x.IsDeleted).ToListAsync();
+            //    ViewBag.Positions = await _context.Positions.Where(_ => !_.IsDeleted).ToListAsync();
             //    return View();
             //}
-            if (member.ImageFile != null)
-            {
-                string folder = Path.Combine(_env.WebRootPath, "img");
-                string fileName = Guid.NewGuid().ToString() + "_" + member.ImageFile.FileName;
-                string filePath = Path.Combine(folder, fileName);
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    await member.ImageFile.CopyToAsync(stream);
-                }
-                member.ImageUrl = "/img/" + fileName;
-            }
+               
             await _context.Members.AddAsync(member);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-        [HttpPost]
+            [HttpPost]
         public async Task<IActionResult> SoftDelete(int id)
         {
             Member? member = await _context.Members
